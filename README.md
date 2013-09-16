@@ -1,0 +1,2 @@
+pentaho-smartbar-plugin
+=======================

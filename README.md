@@ -48,4 +48,10 @@ To build and deploy plugin to your local biserver:
 	<li>execute: ant clean resolve dist install</li>
 </ol>
 
+Useful links:
+
+<ul>
+	<li><a href="http://wiki.pentaho.com/display/ServerDoc2x/Developing+Plugins">Developing Plugins</a></li>
+	<li><a href="http://wiki.pentaho.com/display/ServerDoc2x/Echo+Plugin+-+a+sample+plugin+for+the+BIServer">Echo Plugin Sample</a></li>
+</ul>
 

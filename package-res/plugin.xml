@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  This plugin specification file illustrates various extension points a plugin can extend, by providing:
+        1. An Echo web service
+        2. Content type registration of, and related content generation for, a new "xecho" solution file type 
+        3. A BI Platform Action, an executable bean that can be invoked by an action sequence
+        
+      A plugin file could contain just one of these sections and be complete.  For purposes of illustration only, we 
+      are showing all in a single plugin, how you might configure each type of extension.  In other words, your plugin
+      may only need to provide a Web Service, in which case you would only need the xml in section 1.  Conversely, your
+      plugin may only need to specify a new content type and content generator, so your plugin.xml would only need to 
+      contain the stuff in section 2, etc. 
+-->
+
+<!-- 
+  Use camelCase in your plugin title. This is important when addressing Visualizations or Services
+  provided by your plugin
+  -->
+<plugin title="echo">
+  
+  <!-- 
+  1. Echo Content Type
+     Here we are configuring the system to recognize our new .xecho file type and make it runnable in PUC.
+     We are telling the platform to run our EchoTestServlet when an xecho file is executed in PUC.  
+  -->
+  <content-type type="echo" mime-type="text/html">
+    <title>Echo Config</title>
+    <description>Echo Config File</description>
+    <icon-url>content/echo-res/echo.jpg</icon-url>
+    <meta-provider>org.pentaho.samples.EchoContentTypeMetaProvider</meta-provider>
+    <operations>
+      <operation>
+        <id>RUN</id>
+        <command>content/echo-res/readme.html?message=from_platform&amp;solution={solution}&amp;path={path}&amp;action={name}</command>
+      </operation>
+    </operations>
+  </content-type>
+  
+    <!-- 
+    2. here, we are making the platform aware of a static resource that our plugin provides.  The echo-res path
+         is referenced above in the content-type definition.  Specifically, the icon is being served statically via
+         this path 
+    -->
+    <static-paths>
+      <static-path url="/echo-res" localFolder="resources"/>
+    </static-paths>  
+    
+    <external-resources>
+        <file context="mantle">content/echo-res/script/js/echo-datasource-service.js</file>
+        <file context="mantle">content/echo-res/script/js/ui.core.js</file>
+        <file context="mantle">content/echo-res/script/js/ui.dialog.js</file>
+        <file context="mantle">content/echo-res/script/js/ui.draggable.js</file>
+        <file context="mantle">content/echo-res/script/js/ui.resizable.js</file>
+        <file context="mantle">content/echo-res/css/demos.css</file>
+        <file context="mantle">content/echo-res/css/jquery-ui.css</file>
+        <file context="mantle">content/echo-res/css/ui.all.css</file>
+    </external-resources>
+    
+    
+    <!-- continue config with plugin.spring.xml -->
+    
+</plugin>

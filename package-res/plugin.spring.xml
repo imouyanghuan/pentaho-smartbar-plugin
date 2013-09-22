@@ -1,40 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ws="http://jax-ws.dev.java.net/spring/core" xmlns:wss="http://jax-ws.dev.java.net/spring/servlet"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ws="http://jax-ws.dev.java.net/spring/core"
+       xmlns:wss="http://jax-ws.dev.java.net/spring/servlet"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
                            http://jax-ws.dev.java.net/spring/core http://jax-ws.dev.java.net/spring/core.xsd
                            http://jax-ws.dev.java.net/spring/servlet http://jax-ws.dev.java.net/spring/servlet.xsd">
 
-  <context:annotation-config />
-  
-    <!-- 
-    (continued from plugin.xml)
-    3.  Here we make the EchoAction available to be run in an action sequence
-    -->
-    <bean id="EchoAction" class="org.pentaho.samples.EchoAction"/>
-    
-    <!-- 
-    4. Here we are registering an HttpServlet to respond to requests to
-       http://<host>:<port>/pentaho/plugins/echo/test
-       where 
-       * 'plugins' is the name the servlet that dispatches requests for plugins
-       * 'echo' is the name of this plugin, i.e. the plugin title
-       * 'test' is the name of this servlet, defined by the bean id
-     -->
-     <bean id="test" class="org.pentaho.samples.EchoTestServlet"/>
-     
-     <!-- 
-     5. Here we configure a resource-based service called EchoResource.
-        The JAX-RS @Path annotation completes the URI to this resource.
-        @Path should be given the value /<plugin>/<JAXRSPluginServlet-id>/<name-of-resource>
-        In this case, the name of the resource is 'echo', so the complete URI is
-        http://<host>:<port>/pentaho/plugin/echo/api/echo
-      -->
-     <bean id="api" class="org.pentaho.platform.web.servlet.JAXRSPluginServlet"/>
-     <!-- The actual resource class need not have a bean id. Classes will be scanned for JAX-RS annotations
-          and this one will be found. -->
-     <bean class="org.pentaho.samples.EchoResource"/>
-	 <bean class="org.pentaho.datasource.samples.EchoDatasourceService"/>
+    <context:annotation-config/>
+    <bean id="api" class="org.pentaho.platform.web.servlet.JAXRSPluginServlet"/>
+    <bean class="org.pentaho.plugins.smartbar.SmartbarResource"/>
 </beans>

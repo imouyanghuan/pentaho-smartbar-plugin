@@ -1,4 +1,4 @@
-<project name="Echo Plugin" basedir="." default="default" xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="SmartBar Plugin" basedir="." default="default" xmlns:ivy="antlib:org.apache.ivy.ant">
 
   <!-- Import the subfloor-pkg.xml file which contains all the default tasks -->
   <import file="build-res/subfloor-pkg.xml" />
@@ -9,10 +9,6 @@
   <target name="install">
     <unzip src="${dist.dir}/${package.basename}.zip" dest="${pentaho.solutions.dir}/system" overwrite="true">
     </unzip>
-    
-    <copy todir="${pentaho.solutions.dir}">
-      <fileset dir="${basedir}/solutions/"/>
-    </copy>
   </target>
 
   <!-- 

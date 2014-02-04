@@ -11,4 +11,20 @@
     <context:annotation-config/>
     <bean id="api" class="org.pentaho.platform.web.servlet.JAXRSPluginServlet"/>
     <bean class="org.pentaho.plugins.smartbar.SmartbarResource"/>
+
+    <bean id="searchableRepositoryFileDao" class="org.pentaho.plugins.smartbar.repository2.unified.jcr.SearchableJcrRepositoryFileDao">
+        <constructor-arg ref="jcrTemplate"/>
+        <constructor-arg ref="transformers"/>
+        <constructor-arg ref="lockHelper"/>
+        <constructor-arg>
+            <bean class="org.pentaho.platform.repository2.unified.jcr.DefaultDeleteHelper">
+                <constructor-arg ref="lockHelper"/>
+                <constructor-arg ref="pathConversionHelper"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg ref="pathConversionHelper"/>
+        <constructor-arg ref="repositoryFileAclDao"/>
+        <constructor-arg ref="defaultAclHandler" />
+        <constructor-arg ref="repositoryAccessVoterManager" />
+    </bean>
 </beans>
